@@ -1,0 +1,42 @@
+version: '3.3'
+
+services:
+
+  joomla:
+    image: joomla:latest
+    restart: always
+    depends_on:
+      - db  
+    ports:
+      - 8034:80
+    environment:
+      JOOMLA_DB_HOST: db:3306
+      JOOMLA_DB_PASSWORD: RootPassword-CHANGEME
+    volumes:
+     - joomla-web:/var/www/html
+
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword-CHANGEME
+      MYSQL_USER: UserName-CHANGEME
+      MYSQL_PASSWORD: PassWord-CHANGEME
+      MYSQL_DATABASE: joomladb
+    volumes:
+      - joomla-db:/var/lib/mysql
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+     - db
+    ports:
+     - 8033:80
+    environment:
+      PMA_HOST: db:3306
+      MEMORY_LIMIT: 3G
+      UPLOAD_LIMIT: 1G
+      
+volumes:
+  joomla-web:
+  joomla-db:
