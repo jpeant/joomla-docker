@@ -8,7 +8,7 @@ services:
     depends_on:
       - db  
     ports:
-      - 8034:80
+      - 8034:80          # Change port 8034
     environment:
       JOOMLA_DB_HOST: db:3306
       JOOMLA_DB_PASSWORD: RootPassword-CHANGEME
