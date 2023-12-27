@@ -1,9 +1,9 @@
-####################################################
-#   Name:   joomla-compose.yml
-#   Usage:  docker compose file for Joomla CMS
-#   Creation:   3.12.23
-#   Author: jpeant 
-####################################################
+#
+#   Name:             joomla-compose.yml
+#   Usage:            docker compose file for Joomla CMS
+#   Creation Date:    3.12.23
+#   Author:           jpeant 
+#
 
 version: '3.3'
 services:
